@@ -16,7 +16,8 @@ private:
     //// STUDENT CODE
     ////
 
-    ChatLogic *_chatLogic;
+    //Create a unique pointer for exclusive ownership
+    std::unique_ptr<ChatLogic> _chatLogic;
 
     ////
     //// EOF STUDENT CODE
@@ -27,7 +28,10 @@ public:
     ~ChatBotPanelDialog();
 
     // getter / setter
-    ChatLogic *GetChatLogicHandle() { return _chatLogic; }
+    ChatLogic *GetChatLogicHandle() { 
+        //Use .get() to return the raw pointer to ChatLogic
+        return _chatLogic.get(); 
+    }
 
     // events
     void paintEvent(wxPaintEvent &evt);
