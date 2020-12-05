@@ -11,7 +11,8 @@ GraphNode::~GraphNode()
     //// STUDENT CODE
     ////
 
-    delete _chatBot; 
+    // Fix for crash due to double de-initialization
+    // delete _chatBot; 
 
     ////
     //// EOF STUDENT CODE
