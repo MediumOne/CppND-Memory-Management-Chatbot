@@ -50,6 +50,7 @@ ChatBot::ChatBot(const ChatBot &source) // 2: copy constructor
 
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
+    _chatLogic->SetChatbotHandle(this);
 
     //Allocate memory for wxBitmap
     _image = new wxBitmap();
@@ -65,6 +66,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source) // 3: copy assignment operato
 
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
+    _chatLogic->SetChatbotHandle(this);
 
     // deallocate existing data
     if(_image != NULL)
@@ -88,6 +90,7 @@ ChatBot::ChatBot(ChatBot &&source) // 4 : move constructor
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
     _image = source._image;
+    _chatLogic->SetChatbotHandle(this);
 
     source._chatLogic = nullptr;
     source._rootNode = nullptr;
@@ -113,6 +116,7 @@ ChatBot &ChatBot::operator=(ChatBot &&source) // 5 : move assignment operator
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
     _image = source._image;
+    _chatLogic->SetChatbotHandle(this);
 
     source._chatLogic = nullptr;
     source._rootNode = nullptr;
